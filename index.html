@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html data-ng-app="myApp">
+<head>
+    <script type="application/javascript" src="lib/jquery/dist/jquery.js"></script>
+    <script type="application/javascript" src="lib/foundation/js/foundation/foundation.js"></script>
+    <script type="application/javascript" src="lib/angularjs/angular.js"></script>
+    <script type="application/javascript" src="main.js"></script>
+    <link rel="stylesheet" href="lib/foundation/css/foundation.css"/>
+    <link rel="stylesheet" href="main.css"/>
+    <title>Videos</title>
+</head>
+<body>
+
+<div data-ng-controller="vidsCtrl" >
+    
+    <div class="row">
+        <div data-ng-repeat="video in videos" ng-class="{end: $index == videos.length - 1}" class="video-container small-12 medium-3 large-6 columns">
+            <img class="video-cover" ng-src="{{video.url}}" alt=""/>
+            <div>{{video.title}}</div>
+            <div>{{video.year}}</div>
+            <div>Director: {{video.director}}</div>
+            <div class="rating"></div>
+        </div>
+    </div>
+    
+</div>
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+body{
+    margin: 10px;
+}
+
+.rating{
+    width: 148px;
+    height: 22px;
+    background: url("images/stars2.png");
+    background-size: 82%;
+    background-repeat:no-repeat;
+}
+
+.video-cover{
+    height: 251px;
+    width: 320px;
+}
+
+.video-container{
+    height: 400px;
+}
