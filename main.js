@@ -1,13 +1,13 @@
-var myApp = angular.module('myApp', []);
+var myApp = angular.module('myApp', ['ngRoute']);
 
-//myApp.config(function($routeProvider){
-//    $routeProvider.when("/",
-//        {
-//            templateUrl:,
-//            controller:
-//        }
-//    )
-//});
+myApp.config(function($routeProvider){
+    $routeProvider.when("/",
+        {
+            templateUrl:"showVideos.html",
+            controller:'vidsCtrl'
+        }
+    )
+});
 
 myApp.factory('videos', [function () {
     var videos = [
