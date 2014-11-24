@@ -1,11 +1,14 @@
 <div class="row">
 
-    <img class="video-cover" data-ng-src="{{requestedVideo.url}}" alt=""/>
+    <img data-ng-src="{{requestedVideo.url}}" alt=""/>
 
+    <!--buid some directives using tabs here-->
     <div>{{requestedVideo.title}}</div>
     <div>{{requestedVideo.year}}</div>
     <div>Director: {{requestedVideo.director}}</div>
     <div class="rating"></div>
+    <h6>REVIEW</h6>
+    <div>{{requestedVideo.review}}</div>
 
 </div>
 

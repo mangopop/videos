@@ -1,3 +1,6 @@
+//TODO build tabs using directives
+//TODO build search function for home page
+
 var myApp = angular.module('myApp', ['ngRoute']);
 
 myApp.config(['$routeProvider',function($routeProvider){ //don't have to add first argument
@@ -27,6 +30,7 @@ myApp.config(['$routeProvider',function($routeProvider){ //don't have to add fir
             year: '2014',
             director: 'Christopher Nolan',
             url: 'images/intersteller.jpg',
+            review: "It is in the nature of science fiction to aspire to more, to ascend fearlessly toward the sublime. You could think of “Interstellar,” which has a lot to say about gravity, as the anti-“Gravity.” That movie, which would fit inside this one twice, stripped away the usual sci-fi metaphysics, presenting space travel as an occasion for quiet wonder and noisy crisis management. Mr Nolan takes the universe and eternity itself as his subject and his canvas, brilliantly exploiting cinema’s ability to shift backward and sideways in time (through flashbacks and cross cuts), even as it moves relentlessly forward.",
             rating:'1'
         },
         {
