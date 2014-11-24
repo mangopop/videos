@@ -1,7 +1,7 @@
 //TODO build tabs using directives
-//TODO build search function for home page
+//TODO build some http stuff in using promises and time out from seperate JSON
 
-var myApp = angular.module('myApp', ['ngRoute']);
+var myApp = angular.module('myApp', ['ngRoute','mm.foundation']);
 
 myApp.config(['$routeProvider',function($routeProvider){ //don't have to add first argument
     $routeProvider.when("/",
@@ -111,3 +111,16 @@ myApp.controller('singleVidCtrl', ['$scope', 'videos', '$routeParams', function(
     $scope.requestedVideo = getVideo($scope.videos,$scope.params);
     console.log($scope.requestedVideo);
 }]);
+
+myApp.controller('TabsDemoCtrl', function ($scope) {
+    $scope.tabs = [
+        { title:"Dynamic Title 1", content:"Dynamic content 1" },
+        { title:"Dynamic Title 2", content:"Dynamic content 2" }
+    ];
+
+    $scope.alertMe = function() {
+        setTimeout(function() {
+            alert("You've selected the alert tab!");
+        });
+    };
+});
