@@ -1,8 +1,11 @@
+<p>Filtered video: {{(videos|filter:searchText).length}}</p>
+<p>video results: {{results.length}}</p>
 <div class="row">
-    <div data-ng-repeat="video in videos" data-ng-class="{end: $index == videos.length - 1}"
-         class="video-container small-12 medium-3 large-6 columns">
+
+    <div data-ng-repeat="video in videos | filter:searchText as results" data-ng-class="{end: $index == videos.length - 1}" class="end video-container small-12 medium-3 large-2 columns">
 
         <!--setRoute('home')-->
+
         <a href="#/singleVideo/{{video.id}}">
             <img class="video-cover" data-ng-src="{{video.url}}" alt=""/>
         </a>
@@ -12,5 +15,8 @@
         <div>Director: {{video.director}}</div>
         <div class="rating"></div>
     </div>
+    <!-- evaluate to true to show-->
+    <!--<div data-ng-show="{{(videos|filter:searchText).length < 1 }}"><p>No matches</p></div>-->
+    <div data-ng-show="results.length < 1"><p>No matches</p></div>
 </div>
 

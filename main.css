@@ -8,13 +8,14 @@ body{
     background: url("images/stars2.png");
     background-size: 82%;
     background-repeat:no-repeat;
+    display: block;
 }
 
 .video-cover{
-    height: 251px;
-    width: 320px;
+    /*height: 251px;*/
+    /*width: 320px;*/
 }
 
 .video-container{
-    height: 400px;
+    height: 439px;
 }
