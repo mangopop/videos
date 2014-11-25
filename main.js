@@ -8,6 +8,8 @@ myApp.config(['$routeProvider',function($routeProvider){ //don't have to add fir
         {
             templateUrl:"partials/allVideos.html",
             controller:'vidsCtrl'
+            //could add some resolve stuff into the the root to wait for data etc. best to assign custom controller
+            //$location.path("/path") for changing path!
         }
     ).when("/singleVideo/:id",
         {
