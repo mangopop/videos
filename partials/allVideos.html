@@ -1,7 +1,12 @@
-<p>Filtered video: {{(videos|filter:searchText).length}}</p>
-<p>video results: {{results.length}}</p>
-<div class="row">
+<div class="row collapse postfix-round">
+    <div class="small-12 columns">
+        <!-- attach the input model to ng-repeat directive. -->
+        <input data-ng-model="searchText.title" type="text" placeholder="Search">
+    </div>
+</div>
 
+<div class="row">
+    <p>Filtered results: {{results.length}}</p>
     <div data-ng-repeat="video in videos | filter:searchText as results" data-ng-class="{end: $index == videos.length - 1}" class="end video-container small-12 medium-3 large-2 columns">
 
         <!--setRoute('home')-->
@@ -10,7 +15,7 @@
             <img class="video-cover" data-ng-src="{{video.url}}" alt=""/>
         </a>
 
-        <div>{{video.title}}</div>
+        <div>{{video.title | uppercase}}</div>
         <div>{{video.year}}</div>
         <div>Director: {{video.director}}</div>
         <div class="rating"></div>

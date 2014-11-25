@@ -1,0 +1,50 @@
+[{
+"id":"1",
+"title": "Intersteller",
+"year": "2014",
+"director": "Christopher Nolan",
+"url": "images/intersteller.jpg",
+"review": "It is in the nature of science fiction to aspire to more, to ascend fearlessly toward the sublime. You could think of “Interstellar,” which has a lot to say about gravity, as the anti-“Gravity.” That movie, which would fit inside this one twice, stripped away the usual sci-fi metaphysics, presenting space travel as an occasion for quiet wonder and noisy crisis management. Mr Nolan takes the universe and eternity itself as his subject and his canvas, brilliantly exploiting cinema’s ability to shift backward and sideways in time (through flashbacks and cross cuts), even as it moves relentlessly forward.",
+"rating":"1"
+},
+{
+"id":"2",
+"title": "Terminator",
+"year": "1989",
+"director": "James Cameron",
+"url": "images/terminator.jpg",
+"rating":"2"
+},
+{
+"id":"3",
+"title": "Kung fu Hustle",
+"year": "2005",
+"director": "Chinese man",
+"url": "images/kung_fu_hustle.jpg",
+"rating":"3"
+},
+{
+"id":"4",
+"title": "Star Wars",
+"year": "1979",
+"director": "Irvine Something",
+"url": "images/star_wars.jpg",
+"rating":"4"
+},
+{
+"id": "5",
+"title": "Iron Man",
+"year": "2010",
+"director": "Irvine Something",
+"url": "images/iron_man.jpg",
+"rating":"5"
+},
+{
+"id":"6",
+"title": "Fury",
+"year": "2014",
+"director": "Irvine Something",
+"url": "images/fury.jpg",
+"rating":"4"
+}]
+
