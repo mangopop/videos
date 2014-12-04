@@ -1,7 +1,7 @@
 //TODO build tabs using directives
 //TODO build some http stuff in using promises and time out from seperate JSON
 
-var myApp = angular.module('myApp', ['ngRoute','mm.foundation']);
+var myApp = angular.module('myApp', ['ngRoute']);
 
 myApp.config(['$routeProvider',function($routeProvider){ //don't have to add first argument
     $routeProvider.when("/",
@@ -24,8 +24,11 @@ myApp.config(['$routeProvider',function($routeProvider){ //don't have to add fir
 
         }
     )
-}]).factory('videos', [function () {
-    var videos = [
+}]).factory('videos', ['$http', '$q', function ($http,$q) { //this order is picky
+
+    //A promise can be in 3 states: pending, fulfilled or rejected. (resolved is an older term used by Q, which means either fulfilled or rejected).
+
+    var videos1 = [
         {
             id:'1',
             title: 'Intersteller',
@@ -76,14 +79,123 @@ myApp.config(['$routeProvider',function($routeProvider){ //don't have to add fir
             rating:'4'
         }
     ];
+    //return videos1;
 
-    return videos;
+    return {
+        getVideos: function() {
+            // the $http API is based on the deferred/promise APIs exposed by the $q service
+            // so it returns a promise for us by default
+            return $http.get('videos.json')
+                .then(function(response) {
+                    if (typeof response.data === 'object') {
+                        return response.data;
+                    } else {
+                        // invalid response
+                        return $q.reject(response.data);
+                    }
+
+                }, function(response) {
+                    // something went wrong
+                    return $q.reject(response.data);
+                });
+        }
+    };
+
+
 }]);
+
+myApp.filter('findStart', function(){
+
+    //searchText.title is bound to the input
+    //does the input and repeat mean we have access to both
+    //how do we access items and input?
+
+    return function(input){ //this will be each items in the repeat list, second should be argument
+
+        //console.log(input);
+        var filtered = [];
+        var item = ['Terminator', 'Intersteller', 'Kung Fu Hustle', 'Star Wars', 'Star Wars: Revenge of the Sith'];
+
+        for(var i = 0; i < item.length; i++ ) {//check each video
+            if (input.substr(0, input.length).toLowerCase() === item[i].substr(0,input.length).toLowerCase()) {
+                console.log(input.substr(0, i));
+                console.log(item[0].substr(0,i));
+                filtered.push(item[i]);
+            }
+        }
+
+        return filtered;
+        //return input.replace(/\w\S*/g, function(txt){
+        //    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+        //    }
+        //);
+
+        //var filtered = [];
+        //for(var i = 0; i < videos.length; i++){
+        //    //var item = items[i];
+        //    ////if this items title doesn't start with the input remove it
+        //    //if(/input/i.test(item.title.substring(0,input.length))){
+        //    //    //filtered.push(item);
+        //    //}
+        //}
+    }
+
+});
 
 myApp.controller('vidsCtrl', ['$scope', 'videos', function ($scope, videos) {
 
-    $scope.videos = videos;
-    var videoCount = $scope.videos.length;
+    $scope.test = "";
+
+    var videoCount = [];
+
+    // This service's function returns a promise, but we'll deal with that shortly
+    videos.getVideos()
+        // then() called when son gets back
+        .then(function(data) {
+            // promise fulfilled
+            if (data) {
+                showVideos(data);
+            } else {
+                console.log('didnt match if');
+            }
+        }, function(error) {
+            // promise rejected, could log the error with: console.log('error', error);
+            console.log('error');
+        });
+
+    function showVideos (data){
+        $scope.videos = data;
+        videoCount = $scope.videos.length;
+    }
+
+    //promise.then(
+    //    function(payload){
+    //        $scope.listingData = payload.data;
+    //    },
+    //    function(errorPayload) {
+    //        console.log('failure loading movie', errorPayload);
+    //    }
+    //);
+
+
+    //var deferred = $q.defer();
+    //var fetchUser = function () {
+    //// After async calls, call deferred.resolve with the response value
+    //    $http.get('videos.json');
+    //    deferred.resolve(user);
+    //// In case of error, call
+    //    deferred.reject('Reason for failure');
+    //};
+    //// Similarly, fetchUserPermissions and fetchUserListData are handled
+    //deferred.promise.then(fetchUser)
+    //    .then(fetchUserPermissions)
+    //    .then(fetchUserListData)
+    //    .then(function (list) {
+    //// Do something with the list of data
+    //    }, function (errorReason) {
+    //
+    //    });
+    //
 
 }]);
 

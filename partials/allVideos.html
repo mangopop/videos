@@ -1,13 +1,14 @@
 <div class="row collapse postfix-round">
     <div class="small-12 columns">
         <!-- attach the input model to ng-repeat directive. -->
-        <input data-ng-model="searchText.title" type="text" placeholder="Search">
+        <input data-ng-model="searchStart.title" type="text" placeholder="Search">
     </div>
 </div>
 
 <div class="row">
     <p>Filtered results: {{results.length}}</p>
-    <div data-ng-repeat="video in videos | filter:searchText as results" data-ng-class="{end: $index == videos.length - 1}" class="end video-container small-12 medium-3 large-2 columns">
+    <!-- add filter: *** for build in -->
+    <div data-ng-repeat="video in videos | filter:searchStart" data-ng-class="{end: $index == videos.length - 1}" class="end video-container small-12 medium-3 large-2 columns">
 
         <!--setRoute('home')-->
 
@@ -20,6 +21,10 @@
         <div>Director: {{video.director}}</div>
         <div class="rating"></div>
     </div>
+
+
+    <div>{{test | findStart}}</div>
+    <input data-ng-model="test" type="text"/>
     <!-- evaluate to true to show-->
     <!--<div data-ng-show="{{(videos|filter:searchText).length < 1 }}"><p>No matches</p></div>-->
     <div data-ng-show="results.length < 1"><p>No matches</p></div>
